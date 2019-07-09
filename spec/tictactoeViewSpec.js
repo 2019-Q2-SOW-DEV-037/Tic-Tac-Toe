@@ -29,12 +29,21 @@ describe("TicTacToe game view", () => {
         expect(element.addEventListener).toHaveBeenCalledWith('click', tictactoeView.handleClickInTheBox, false);
     });
 
-    it('should show message if a player wins', () => {
+    it('should show message "Winner is Player X" if player X wins', () => {
         let winner = 'X',
             isGameOver = true;
 
         tictactoeView.showResultIfGameOver(winner, isGameOver);
 
         expect(tictactoeView.gameResult.innerText).toBe('Winner is Player X');
+    });
+
+    it('should show message "Winner is Player Y" if player O wins', () => {
+        let winner = 'O',
+            isGameOver = true;
+
+        tictactoeView.showResultIfGameOver(winner, isGameOver);
+
+        expect(tictactoeView.gameResult.innerText).toBe('Winner is Player O');
     });
 });
