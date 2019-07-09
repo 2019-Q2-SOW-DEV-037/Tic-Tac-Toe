@@ -1,7 +1,7 @@
 var TicTacToeController = require('../controllers/tictactoeController');
 const Constants = require('../config/constants');
 
-var tictactoeController = new TicTacToeController(Constants.INITIAL_TURN);
+var tictactoeController = new TicTacToeController(Constants.INITIAL_TURN, Constants.WIN_SEQUENCES, false);
 
 class TicTacToeView {
 
