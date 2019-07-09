@@ -23,7 +23,7 @@ class TicTacToeView {
     }
 
     handleClickInTheBox(event) {
-        tictactoeController.whenClicksMarkSomething(event.target);
+        tictactoeController.makeMove(event.target);
     }
 }
 

@@ -17,4 +17,15 @@ describe('TicTacToe game controller', () => {
 
         expect(gridBox.innerText).toBe('X');
     });
+
+    it('should mark nothing if play on a played position', () => {
+        let gridBox = {
+            innerText: 'X'
+        };
+        tictactoeController.whenClicksMarkSomething = jasmine.createSpy();
+
+        tictactoeController.makeMove(gridBox);
+
+        expect(tictactoeController.whenClicksMarkSomething).not.toHaveBeenCalled();
+    });
 });
