@@ -12,9 +12,20 @@ describe("TicTacToe game view", () => {
         tictactoeView = new TicTacTocView();
     });
 
-    it("should show TicTacToe game layout", () => {
+    it('should show TicTacToe game layout', () => {
         tictactoeView.renderGameLayout();
 
         expect(document.body.innerHTML).not.toBe("");
+    });
+
+    it('should bind the user click events with grid boxes', () => {
+        let element = document.createElement('div');
+        element.className = 'grid-item';
+        document.body.appendChild(element);
+        element.addEventListener = jasmine.createSpy();
+
+        tictactoeView.bindUserClickEventsWithGameLayout();
+
+        expect(element.addEventListener).toHaveBeenCalledWith('click', tictactoeView.handleClickInTheBox, false);
     });
 });
