@@ -28,4 +28,16 @@ describe('TicTacToe game controller', () => {
 
         expect(tictactoeController.whenClicksMarkSomething).not.toHaveBeenCalled();
     });
+
+    it('should mark O if Player X has played last', () => {
+        let gridBox = {
+            innerText: ''
+        };
+        tictactoeController.turnOfPlayer = 'X';
+
+        tictactoeController.changePlayerTurn();
+        tictactoeController.whenClicksMarkSomething(gridBox);
+
+        expect(gridBox.innerText).toBe('O');
+    });
 });

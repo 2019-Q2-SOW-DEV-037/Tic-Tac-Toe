@@ -1,3 +1,5 @@
+const Constants = require('../config/constants');
+
 class TicTacToeController {
 
     constructor(turnOfPlayer) {
@@ -7,6 +9,7 @@ class TicTacToeController {
     makeMove(gridBox) {
         if (!this.isSomethingFilledInTheBox(gridBox)) {
             this.whenClicksMarkSomething(gridBox);
+            this.changePlayerTurn();
         }
     }
 
@@ -16,6 +19,12 @@ class TicTacToeController {
 
     whenClicksMarkSomething(gridBox) {
         gridBox.innerText = this.turnOfPlayer;
+    }
+
+    changePlayerTurn() {
+        if (Constants.PLAYER_X === this.turnOfPlayer) {
+            this.turnOfPlayer = Constants.PLAYER_O;
+        }
     }
 }
 
