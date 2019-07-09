@@ -46,4 +46,13 @@ describe("TicTacToe game view", () => {
 
         expect(tictactoeView.gameResult.innerText).toBe('Winner is Player O');
     });
+
+    it('should show message "Game is a Draw" if player O wins', () => {
+        let winner = '',
+            isGameOver = true;
+
+        tictactoeView.showResultIfGameOver(winner, isGameOver);
+
+        expect(tictactoeView.gameResult.innerText).toBe('Game is a Draw');
+    });
 });

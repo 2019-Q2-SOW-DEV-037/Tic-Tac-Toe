@@ -52,7 +52,7 @@ class TicTacToeView {
     }
 
     createMessage(winningPlayer) {
-        return 'Winner is Player ' + winningPlayer;
+        return winningPlayer ? 'Winner is Player ' + winningPlayer : 'Game is a Draw';
     }
 }
 
