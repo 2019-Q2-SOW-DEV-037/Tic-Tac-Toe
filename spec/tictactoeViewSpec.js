@@ -9,7 +9,7 @@ describe("TicTacToe game view", () => {
     var tictactoeView;
 
     beforeEach(() => {
-        tictactoeView = new TicTacTocView();
+        tictactoeView = new TicTacTocView('');
     });
 
     it('should show TicTacToe game layout', () => {
@@ -27,5 +27,14 @@ describe("TicTacToe game view", () => {
         tictactoeView.bindUserClickEventsWithGameLayout();
 
         expect(element.addEventListener).toHaveBeenCalledWith('click', tictactoeView.handleClickInTheBox, false);
+    });
+
+    it('should show message if a player wins', () => {
+        let winner = 'X',
+            isGameOver = true;
+
+        tictactoeView.showResultIfGameOver(winner, isGameOver);
+
+        expect(tictactoeView.gameResult.innerText).toBe('Winner is Player X');
     });
 });

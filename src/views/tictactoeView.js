@@ -5,6 +5,16 @@ var tictactoeController = new TicTacToeController(Constants.INITIAL_TURN, Consta
 
 class TicTacToeView {
 
+    constructor(gameResult) {
+        this.gameResult = gameResult;
+    }
+
+    playGame() {
+        this.renderGameLayout();
+        this.handleClickInTheBox = this.handleClickInTheBox.bind(this);
+        this.bindUserClickEventsWithGameLayout();
+    }
+
     renderGameLayout() {
         document.body.innerHTML = '<div class="grid-container" id="grid"></div>';
         var element;
@@ -24,6 +34,25 @@ class TicTacToeView {
 
     handleClickInTheBox(event) {
         tictactoeController.makeMove(event.target);
+        this.showResultIfGameOver(tictactoeController.winningPlayer, tictactoeController.gameOver);
+    }
+
+    showResultIfGameOver(winningPlayer, gameOver) {
+        if (gameOver && '' === this.gameResult) {
+            this.gameResult = this.showResult(winningPlayer);
+            document.body.appendChild(this.gameResult);
+        }
+    }
+
+    showResult(winningPlayer) {
+        let element = document.createElement('h1');
+        let message = this.createMessage(winningPlayer);
+        element.innerText = message;
+        return element;
+    }
+
+    createMessage(winningPlayer) {
+        return 'Winner is Player ' + winningPlayer;
     }
 }
 
