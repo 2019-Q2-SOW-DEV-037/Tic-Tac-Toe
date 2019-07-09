@@ -24,7 +24,9 @@ class TicTacToeController {
     changePlayerTurn() {
         if (Constants.PLAYER_X === this.turnOfPlayer) {
             this.turnOfPlayer = Constants.PLAYER_O;
+            return;
         }
+        this.turnOfPlayer = Constants.PLAYER_X;
     }
 }
 

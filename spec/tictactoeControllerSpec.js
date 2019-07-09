@@ -40,4 +40,16 @@ describe('TicTacToe game controller', () => {
 
         expect(gridBox.innerText).toBe('O');
     });
+
+    it('should mark X if Player O has played last', () => {
+        let gridBox = {
+            innerText: ''
+        };
+        tictactoeController.turnOfPlayer = 'X';
+
+        tictactoeController.changePlayerTurn();
+        tictactoeController.whenClicksMarkSomething(gridBox);
+
+        expect(gridBox.innerText).toBe('O');
+    });
 });
