@@ -38,7 +38,7 @@ class TicTacToeController {
 
     checkGameOver(boxMarked) {
         var moves = this.returnUpdatedMovesOfPlayer(boxMarked);
-        if (this.isPlayerMovesInRow(moves)) {
+        if (this.isPlayerMovesInRow(moves) || this.isAllBoxesFilled()) {
             this.gameOver = true;
         }
     }
@@ -75,6 +75,9 @@ class TicTacToeController {
         return -1 < winSequence.indexOf(move);
     }
 
+    isAllBoxesFilled() {
+        return Constants.MAX_NUMBER_OF_MOVES === (this.movesOfPlayers.X.length + this.movesOfPlayers.O.length);
+    }
 }
 
 module.exports = TicTacToeController;

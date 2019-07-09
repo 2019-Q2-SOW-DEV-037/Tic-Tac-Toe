@@ -62,4 +62,18 @@ describe('TicTacToe game controller', () => {
 
         expect(tictactoeController.gameOver).toBe(true);
     });
+
+    it('should game over if all moves are played', () => {
+        tictactoeController.movesOfPlayers.X = ['5', '3', '4', '8'];
+        tictactoeController.movesOfPlayers.O = ['1', '9', '7', '6'];
+        tictactoeController.turnOfPlayer = 'X';
+        tictactoeController.winSequences = Constants.WIN_SEQUENCES;
+        tictactoeController.isPlayerMovesInRow = jasmine.createSpy();
+        tictactoeController.isPlayerMovesInRow.and.returnValue(false);
+
+        tictactoeController.checkGameOver('2');
+
+        expect(tictactoeController.isPlayerMovesInRow).toHaveBeenCalled();
+        expect(tictactoeController.gameOver).toBe(true);
+    });
 });
