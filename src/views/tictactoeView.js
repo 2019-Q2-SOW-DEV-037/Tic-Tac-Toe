@@ -38,10 +38,14 @@ class TicTacToeView {
     }
 
     showResultIfGameOver(winningPlayer, gameOver) {
-        if (gameOver && '' === this.gameResult) {
+        if (this.isGameOverAndResultPublished(gameOver)) {
             this.gameResult = this.showResult(winningPlayer);
             document.body.appendChild(this.gameResult);
         }
+    }
+
+    isGameOverAndResultPublished(gameOver) {
+        return gameOver && '' === this.gameResult;
     }
 
     showResult(winningPlayer) {

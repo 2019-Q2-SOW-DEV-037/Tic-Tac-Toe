@@ -29,18 +29,26 @@ class TicTacToeController {
     }
 
     changePlayerTurn() {
-        if (Constants.PLAYER_X === this.turnOfPlayer) {
+        if (this.isTurnOfPlayerX()) {
             this.turnOfPlayer = Constants.PLAYER_O;
             return;
         }
         this.turnOfPlayer = Constants.PLAYER_X;
     }
 
+    isTurnOfPlayerX() {
+        return Constants.PLAYER_X === this.turnOfPlayer;
+    }
+
     checkGameOver(boxMarked) {
         var moves = this.returnUpdatedMovesOfPlayer(boxMarked);
-        if (this.isPlayerMovesInRow(moves) || this.isAllBoxesFilled()) {
+        if (this.isGameWonOrDraw(moves)) {
             this.gameOver = true;
         }
+    }
+
+    isGameWonOrDraw(moves) {
+        return this.isPlayerMovesInRow(moves) || this.isAllBoxesFilled();
     }
 
     returnUpdatedMovesOfPlayer(boxMarked) {
